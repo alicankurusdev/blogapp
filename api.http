@@ -1,8 +1,12 @@
-###
+# @name listCategory
 GET http://127.0.0.1:8000/blogCategories
 ###
+
+# @name readCategory
 GET http://127.0.0.1:8000/blogCategories/69aeaf93c9ef067fcb9e556b
 ###
+
+# @name postCategory
 POST  http://127.0.0.1:8000/blogCategories
 Content-Type: application/json
 
@@ -10,12 +14,92 @@ Content-Type: application/json
   "name": "title-1"
 }
 ###
-PUT  http://127.0.0.1:8000/blogCategories/69aeaf93c9ef067fcb9e556b
+
+# @name updateCategory
+PUT  http://127.0.0.1:8000/blogCategories/69aeb6e6e889be6307d0c4d6
 Content-Type: application/json
 
 {
-  "name": "title-2"
+  "name": "title-7"
 }
 ###
+
+# @name deleteCategory
 DELETE  http://127.0.0.1:8000/blogCategories/69aeaf93c9ef067fcb9e556b
+Content-Type: application/json
+###
+
+# @name listBlogPosts
+GET http://127.0.0.1:8000/blogPosts
+###
+
+# @name readBlogPost
+GET http://127.0.0.1:8000/blogPosts/69b12ce5c212e64fdbca28c1
+###
+
+# @name postBlogPost
+POST  http://127.0.0.1:8000/blogPosts
+Content-Type: application/json
+
+{
+  "title": "title-1",
+  "content":"Content for post 1",
+  "categoryId":"69aeb6e6e889be6307d0c4d9"
+}
+###
+
+# @name updateBlogPost
+PUT  http://127.0.0.1:8000/blogPosts/69b12ce5c212e64fdbca28c1
+Content-Type: application/json
+
+{
+  "title": "title-115",
+  "content":"Content for post 2",
+  "categoryId":"69aeb6e6e889be6307d0c4d9"
+}
+###
+
+# @name deleteBlogPost
+
+DELETE  http://127.0.0.1:8000/blogPosts/
+Content-Type: application/json
+
+###
+
+# @name listUsers
+GET http://127.0.0.1:8000/users
+###
+
+# @name readUsers
+GET http://127.0.0.1:8000/users/
+###
+
+# @name postUsers
+POST  http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+  "email": "kuli112@gmail.com",
+  "password":"12345",
+  "userName":"kual1112",
+  "firstName":"kullanici1",
+  "lastName":"kullanici1"
+}
+###
+
+# @name updateUsers
+PUT  http://127.0.0.1:8000/users/
+Content-Type: application/json
+
+{
+  "email": "kullanici1@gmailcom",
+  "password":"123456789",
+  "userName":"kullanici1",
+  "firstName":"kullanici1",
+  "lastName":"kullanici1"
+}
+###
+
+# @name deleteUsers
+DELETE  http://127.0.0.1:8000/users/
 Content-Type: application/json

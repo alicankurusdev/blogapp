@@ -20,8 +20,10 @@ app.use(express.json())
 
 /* ------------------------------ db connection ----------------------------- */
 require('./app/dbconnection')()
-/* --------------------------------- routes --------------------------------- */
-app.use(require('./app/routes/blogCategoryRouter'))
+/* --------------------------------- routes ------a--------------------------- */
+app.use('/blogCategories',require('./app/routes/blogCategoryRouter'))
+app.use('/blogPosts',require('./app/routes/blogPostRouter'))
+app.use('/users',require('./app/routes/userRouter'))
 
 /* ------------------------------ error Handler ----------------------------- */
 app.use(require('./app/middlewares/errorHandler')) 

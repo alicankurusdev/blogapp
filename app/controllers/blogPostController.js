@@ -1,21 +1,21 @@
 "use strict";
 
 /* -------------------------------------------------------------------------- */
-/*                    EXPRESS JS-BLOG PROJECT BLOG CATEGORY CONTROLLER                  */
+/*                    EXPRESS JS-BLOG PROJECT BLOGPOST CONTROLLER                  */
 /* -------------------------------------------------------------------------- */
-const { BlogCategory } = require("../models/blogCategoryModel");
-
+const { BlogPost } = require("../models/blogPostModel");
+const mongoose = require("mongoose");
 module.exports = {
   list: async (req, res) => {
     console.log("list worked");
-    const result = await BlogCategory.find();
+    const result = await BlogPost.find();
     res.status(200).send({
       error: false,
       result,
     });
   },
   create: async (req, res) => {
-    const result = await BlogCategory.create(req.body);
+    const result = await BlogPost.create(req.body);
     console.log("cre worked");
 
     res.status(201).send({
@@ -25,8 +25,17 @@ module.exports = {
   },
   read: async (req, res) => {
     console.log("re worked");
-
-    const result = await BlogCategory.findById(req.params.id);
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      res.status(400).send({
+        error: true,
+        message: "Invalid ID format",
+      });
+    }
+    const result = await BlogPost.findById(req.params.id);
+    if (!result) {
+      res.errorStatusCode = 400;
+      throw new Error("Data is not found");
+    }
     res.status(200).send({
       error: false,
       result,
@@ -35,11 +44,9 @@ module.exports = {
   update: async (req, res) => {
     console.log("up worked");
 
-    const result = await BlogCategory.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }, // makes result updated data
-    );
+    const result = await BlogPost.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     if (!result) {
       console.log("calsiti");
       res.errorStatusCode = 400;
@@ -53,16 +60,12 @@ module.exports = {
   delete: async (req, res) => {
     console.log("de worked");
 
-    const result = await BlogCategory.deleteOne(
-      { _id: req.params.id },
-      req.body,
-    );
+    const result = await BlogPost.deleteOne({ _id: req.params.id }, req.body);
     if (result.deletedCount) {
       res.sendStatus(204);
     } else {
       res.errorStatusCode = 404;
       throw new Error("Data is not found and not deleted");
-       
     }
   },
 };
