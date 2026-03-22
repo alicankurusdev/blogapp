@@ -5,17 +5,7 @@
 /* -------------------------------------------------------------------------- */
 
 const mongoose = require("mongoose");
-const crypto = require("node:crypto");
-
-const passwordEncrypte = (password) => {
-  const salt = "65as4d4asd6as2d84d9asd46ver4b4b";
-  const iterations = 10_000;
-  const keylen = 50;
-  const digest = "sha512";
-  return crypto
-    .pbkdf2Sync(password, salt, iterations, keylen, digest)
-    .toString("hex");
-};
+const passwordEncrypte = require('../utils/passwordEncrypt')
 //*User Schema
 const userSchema = new mongoose.Schema(
   {
@@ -31,14 +21,13 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       trim: true,
-      unique: true,
       required: true,
       set: passwordEncrypte
     },
     userName: {
       type: String,
       trim: true,
-      unique: true,
+      //unique: true,
       required: [true, "This username is Already in use"],
     },
     firstName: String,

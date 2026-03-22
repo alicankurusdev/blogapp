@@ -6,7 +6,10 @@
 const blogCategory= require('../controllers/blogCategoryController')
 const router=require('express').Router()
 
+
 /* -------------------------------------------------------------------------- */
+//URL:/blogCategories ->
+
 router.route('/')
 .get(blogCategory.list)
 .post(blogCategory.create)

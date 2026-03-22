@@ -3,6 +3,12 @@
 /* -------------------------------------------------------------------------- */
 /*                    EXPRESS JS-BLOG PROJECT BLOG POST ROUTER                  */
 /* -------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------- */
+//URL:/blogPosts->
+
 const blogPosts= require('../controllers/blogPostController')
 const router=require('express').Router()
 router.route('/')

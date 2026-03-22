@@ -12,15 +12,28 @@ require('dotenv').config()
 const PORT =  process.env.PORT || 8000
 const HOST =  process.env.HOST || "http://127.0.0.1"
 
-/* ------------------------------- middlewares & config ------------------------------ */
-
-
 /* -------------------------- accept and parse data ------------------------- */
 app.use(express.json())
+
+/* ------------------------------- middlewares & config ------------------------------ */
+const session = require("cookie-session")
+app.use(session({
+    secret:process.env.PASS_SALT,
+   // maxAge:1000*10
+}))
+
 
 /* ------------------------------ db connection ----------------------------- */
 require('./app/dbconnection')()
 /* --------------------------------- routes ------a--------------------------- */
+app.all('/', (req,res)=>{
+    res.send({
+        message:"welcome to Blog API",
+        session:req.session
+    })
+    req.session
+})
+
 app.use('/blogCategories',require('./app/routes/blogCategoryRouter'))
 app.use('/blogPosts',require('./app/routes/blogPostRouter'))
 app.use('/users',require('./app/routes/userRouter'))
