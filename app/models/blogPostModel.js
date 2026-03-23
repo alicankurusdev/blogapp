@@ -17,6 +17,12 @@ const blogPostSchema = new mongoose.Schema(
         unique:true // => makes one to one relationship one category only applicable to one blog
        },
     ],
+    userId:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User",
+      required:true
+    },
+
     title: {
       type: String,
       trim: true,

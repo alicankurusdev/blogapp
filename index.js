@@ -19,9 +19,11 @@ app.use(express.json())
 const session = require("cookie-session")
 app.use(session({
     secret:process.env.PASS_SALT,
-   // maxAge:1000*10
+   // maxAge:this comes from controller as sessionOptions
 }))
 
+//User control
+app.use(require('./app/middlewares/userControl'))
 
 /* ------------------------------ db connection ----------------------------- */
 require('./app/dbconnection')()

@@ -37,14 +37,15 @@ GET http://127.0.0.1:8000/blogPosts
 GET http://127.0.0.1:8000/blogPosts/
 ###
 
-# @name postBlogPost
+# @name createBlogPost
 POST  http://127.0.0.1:8000/blogPosts
 Content-Type: application/json
 
 {
   "title": "title-1",
   "content":"Content for post 1",
-  "categoryId":"69aeb6e6e889be6307d0c4d9"
+  "categoryId":"69c059b6ed58d2168c49b909",
+  "userId":"69c11fcb26a22a1f446812f2"
 }
 ###
 
@@ -79,9 +80,9 @@ POST  http://127.0.0.1:8000/users
 Content-Type: application/json
 
 {
-  "email": "user-1@gmail.com",
+  "email": "user-4@gmail.com",
   "password":"1234567890",
-  "userName":"user - 1",
+  "userName":"user - 4",
   "firstName":"user - cx ",
   "lastName":"user - cx "
 }
@@ -110,7 +111,7 @@ POST   http://127.0.0.1:8000/users/login
 Content-Type: application/json
 
 {
-  "email": "user-1@gmail.com",
+  "email": "user-4@gmail.com",
   "password":"1234567890"
 
 }

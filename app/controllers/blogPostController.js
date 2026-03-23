@@ -15,6 +15,13 @@ module.exports = {
     });
   },
   create: async (req, res) => {
+
+    if (!req.user) {
+      throw new Error("first you have to login ");
+      
+    } 
+
+    req.body.userId = req.user._id
     const result = await BlogPost.create(req.body);
     console.log("cre worked");
 

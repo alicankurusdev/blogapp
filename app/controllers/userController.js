@@ -96,7 +96,7 @@ module.exports = {
           //COOKIE
           if (req.body?.rememberMe == true) {
             req.session.rememberMe =true;
-            req.sessionOptions.maxAge = 1000*20
+            req.sessionOptions.maxAge = 1000*60*60*24
             
           }
           res.status(200).send({
