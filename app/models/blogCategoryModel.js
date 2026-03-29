@@ -20,6 +20,4 @@ const blogCategorySchema = new mongoose.Schema(
 
 const BlogCategory = mongoose.model('BlogCategory',blogCategorySchema)
 
-module.exports={
-BlogCategory
-}
+module.exports=BlogCategory

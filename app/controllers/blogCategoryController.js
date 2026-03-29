@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 /*                    EXPRESS JS-BLOG PROJECT BLOG CATEGORY CONTROLLER                  */
 /* -------------------------------------------------------------------------- */
-const { BlogCategory } = require("../models/blogCategoryModel");
+const  BlogCategory  = require("../models/blogCategoryModel");
 
 module.exports = {
   list: async (req, res) => {

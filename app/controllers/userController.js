@@ -9,9 +9,10 @@ const passwordEncrypt = require("../utils/passwordEncrypt");
 module.exports = {
   list: async (req, res) => {
     console.log("list worked");
-    const result = await User.find();
+    const result = await res.getModelList(User);
     res.status(200).send({
       error: false,
+      details:await res.getModelListDetails(User),
       result,
     });
   },
@@ -95,9 +96,8 @@ module.exports = {
           };
           //COOKIE
           if (req.body?.rememberMe == true) {
-            req.session.rememberMe =true;
-            req.sessionOptions.maxAge = 1000*60*60*24
-            
+            req.session.rememberMe = true;
+            req.sessionOptions.maxAge = 1000 * 60 * 60 * 24;
           }
           res.status(200).send({
             error: false,
@@ -114,12 +114,11 @@ module.exports = {
     }
   },
   logout: async (req, res) => {
-
-    req.session = null 
+    req.session = null;
 
     res.status(200).send({
-      error:false,
-      message:"Log out is success"
-    })
+      error: false,
+      message: "Log out is success",
+    });
   },
 };

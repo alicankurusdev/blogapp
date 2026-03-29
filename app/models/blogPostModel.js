@@ -14,7 +14,6 @@ const blogPostSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "BlogCategory",
         required: [true, "BlogCategory field is required"],
-        unique:true // => makes one to one relationship one category only applicable to one blog
        },
     ],
     userId:{
@@ -33,12 +32,13 @@ const blogPostSchema = new mongoose.Schema(
       trim: true,
       required: [true, "Content field is required"],
     },
+    published:{
+      type:Boolean,
+      default:false
+    }
+    
   },
   { collection: "blogPosts", timestamps: true },
 );
 
-const BlogPost = mongoose.model("BlogPost", blogPostSchema);
-
-module.exports = {
-  BlogPost,
-};
+module.exports = mongoose.model("BlogPost", blogPostSchema);

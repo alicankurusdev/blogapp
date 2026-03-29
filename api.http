@@ -31,6 +31,12 @@ Content-Type: application/json
 
 # @name listBlogPosts
 GET http://127.0.0.1:8000/blogPosts
+?filter[published]=false
+ &sort[createdAt]=asc
+#  &page=5
+#  &limit=10
+ &search[title]=71 title
+#&search[content]= 1 test
 ###
 
 # @name readBlogPost

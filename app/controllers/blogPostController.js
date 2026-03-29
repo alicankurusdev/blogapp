@@ -3,25 +3,25 @@
 /* -------------------------------------------------------------------------- */
 /*                    EXPRESS JS-BLOG PROJECT BLOGPOST CONTROLLER                  */
 /* -------------------------------------------------------------------------- */
-const { BlogPost } = require("../models/blogPostModel");
+const BlogPost = require("../models/blogPostModel");
 const mongoose = require("mongoose");
+
 module.exports = {
   list: async (req, res) => {
-    console.log("list worked");
-    const result = await BlogPost.find();
+    const result = await res.getModelList(BlogPost, ["blogCategory", "userId"]);
+
     res.status(200).send({
       error: false,
+      details:await res.getModelListDetails(BlogPost),
       result,
     });
   },
   create: async (req, res) => {
-
     if (!req.user) {
       throw new Error("first you have to login ");
-      
-    } 
+    }
 
-    req.body.userId = req.user._id
+    req.body.userId = req.user._id;
     const result = await BlogPost.create(req.body);
     console.log("cre worked");
 
