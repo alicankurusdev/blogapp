@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 const passwordEncrypt = require("../utils/passwordEncrypt");
 module.exports = {
   list: async (req, res) => {
-    console.log("list worked");
     const result = await res.getModelList(User);
     res.status(200).send({
       error: false,
